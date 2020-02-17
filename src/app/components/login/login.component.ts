@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   successMessage;
   loginForm : any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -27,16 +28,7 @@ export class LoginComponent implements OnInit {
   */
 
   tryLogin(value){
-    this.authService.doLogin(value)
-    .then(res => {
-      console.log(res);
-    //  this.errorMessage = 'Tu cuenta no se ha podido crear';
-      this.successMessage = 'Has iniciado sesión';
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-    //  this.successMessage = '';
-    })
+    this.authService.doLogin(value);
   }
 
 }

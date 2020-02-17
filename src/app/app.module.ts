@@ -14,14 +14,17 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { HomeComponent } from './components/home/home.component';
 
 // Servicios
-import { AuthService } from './service/auth.service';
+import { AuthService } from './services/auth.service';
+import { FirebaseService } from './services/firebase.service';
 
 // Angular
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
+import { FoodMenuComponent } from './components/food-menu/food-menu.component';
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     JumbotronComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FoodMenuComponent
   ],
   imports: [
     BrowserModule,

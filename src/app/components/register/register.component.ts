@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -27,16 +27,6 @@ export class RegisterComponent implements OnInit {
   */
 
   tryRegister(value){
-    this.authService.doRegister(value)
-    .then(res => {
-      console.log(res);
-    //  this.errorMessage = 'Tu cuenta no se ha podido crear';
-      this.successMessage = 'Tu cuenta ha sido creada';
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-    //  this.successMessage = '';
-    })
+    this.authService.doRegister(value);
   }
-
 }

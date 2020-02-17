@@ -5,10 +5,12 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FoodMenuComponent } from './components/food-menu/food-menu.component';
 
 const routes: Routes = [
 	{
-		path: '', component: HomeComponent
+		path: '',
+		component: HomeComponent 
 	},
 	{
 		path: 'login',
@@ -17,6 +19,10 @@ const routes: Routes = [
 	{
 		path: 'registro',
 		component: RegisterComponent
+	},
+	{
+		path: 'menu',
+		component: FoodMenuComponent
 	},
 	{
 		path: '**',

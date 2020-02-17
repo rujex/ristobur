@@ -1,0 +1,76 @@
+/*
+	Contenedor del menu
+*/
+.navbar{
+	float: left;
+	width: 700px !important;
+	height: 60px !important;
+	margin-left: 8px !important;
+	margin-top: 10px !important;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+}
+/*
+	Iconos del menu
+*/
+.navbar-brand{
+	margin-left: 10px;
+	color: #7b7f76;
+	font-size: 15px;
+	font-weight: bold
+}
+/*
+	Fondo del menu
+*/
+.bg-dark{
+	background-color: white !important;
+}
+#navbarSupportedContent{
+	margin-left: 30px;
+}
+.nav-item{
+	margin-right: 50px;
+}
+a{
+	margin-top: 5px;
+}
+.info-menu{
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	background-color: white;
+	width: 280px;
+	height: 60px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+}
+.restaurant{
+	display: inline-block;
+	margin-left: 10px;
+}
+.recogida{
+	display: inline-block;
+	font-size: 15px;
+	margin-left: 10px;
+	opacity: .85;
+}
+.seleccion{
+	margin-left: 15px;
+	margin-top: -5px;
+	font-size: 15px;
+	font-weight: bold;
+	opacity: .85;
+}
+.shop{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 60px;
+	height: 60px;
+	border-radius: 4px;
+	background-color: #d6d6d6;
+	cursor: not-allowed;
+}
+.productos{
+	display: block;
+	margin: auto;
+	margin-top: 12px;
+}

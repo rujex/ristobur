@@ -1,34 +1,46 @@
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  
+    
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+  <!-- Menú con opciones -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <a class="nav-link" routerLink="/inicio">Inicio</a>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Pide online</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+        <a (click)="metodo()" class="navbar-brand" routerLink="">
+          <img src="../assets/images/menu.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          Menú
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="navbar-brand" routerLink="">
+          <img src="../assets/images/pedidos.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          Mis pedidos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="">
+          <img src="../assets/images/novedades.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          Novedades
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/login">
+          <img src="../assets/images/usuario.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          Entrar
+        </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
+
+<div class="info-menu">
+  <img src="../assets/images/restaurant.png" class="restaurant" width="20" height="20">
+  <p class="recogida">Recoger en local o domicilio</p>
+  <p class="seleccion">Aún no seleccionado</p>
+</div>
+
+<div class="shop">
+  <img src="../assets/images/productos.png" class="productos" width="30" height="30">
+</div>
