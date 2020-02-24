@@ -1,0 +1,37 @@
+<!-- Nombre e Imagen -->
+<h1 class="name">Ristobur</h1>
+<img src="../assets/images/logo.png" width="70" height="70" class="logo" alt="Ristobur">
+
+<!-- Menu -->
+<app-navbar></app-navbar>
+
+<br/>
+
+<div style="margin-left: 50px;margin-top: 100px;">
+	<h1>Entrantes</h1>
+
+	<hr>
+
+	<ul *ngFor="let entrante of entrantes | async">
+		<li style="list-style: none; font-size: 18px; font-weight: bold">
+			{{entrante.nombre}}
+		</li>
+		<li style="list-style: none; font-size: 14px; text-align: justify;">
+			{{entrante.descripcion}}
+		</li>
+		<li style="list-style: none; font-size: 14px">
+			{{entrante.precio}}€
+		</li>
+	
+
+	<img src="https://okdiario.com/img/2019/05/27/dia-mundial-de-la-hamburguesa-655x368.jpg" alt="hamburguesa" width="300" height="200">
+
+	<br/>
+	<button (click)="subtract()" style="width: 30px;height: 30px; float: left;">-</button>
+	<p style="float: left;">{{count}}</p>
+	<button (click)="add()" style="width: 30px;height: 30px;float: left;">+</button>
+	<br/>
+	<button (click)="doOrder(entrante.nombre)" style="margin-top: 15px">Añadir al carrito</button>
+
+	</ul>
+</div>

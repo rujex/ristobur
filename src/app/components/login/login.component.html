@@ -4,38 +4,47 @@
 
 <!-- Menu -->
 <app-navbar></app-navbar>
+<br/>
 
-<!-- Formulario -->
-<form [formGroup]="loginForm">
+<!-- Bloque login -->
+<div class="container">
   
-  <!-- Email -->
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" 
-           formControlName="email" id="exampleInputEmail1" 
-           aria-describedby="emailHelp" required>
-  </div>
+  <!-- Formulario -->
+  <form [formGroup]="loginForm">
+    
+    <!-- Email -->
+    <div class="form-group">
+      <label for="exampleInputEmail1">
+              Email
+      </label>
+      <input type="email" class="form-control" 
+             formControlName="email" id="exampleInputEmail1" 
+             aria-describedby="emailHelp" 
+             required>
+    </div>
 
 
-  <!-- Contraseña -->
-  <div class="form-group">
-    <label for="exampleInputPassword1">Contraseña</label>
-    <input type="password" class="form-control"
-           formControlName="password" id="exampleInputPassword1" required>
-  </div>
+    <!-- Contraseña -->
+    <div class="form-group">
+      <label for="exampleInputPassword1">Contraseña</label>
+      <input type="password" class="form-control"
+             formControlName="password" id="exampleInputPassword1"
+             required>
+    </div>
 
 
-  <!-- Mensajes -->
-  <label class="error">{{errorMessage}}</label>
-  <label class="success">{{successMessage}}</label>
+    <!-- Mensajes -->
+    <label class="error">{{errorMessage}}</label>
+    <label class="success">{{successMessage}}</label>
 
 
-  <!-- Botón iniciar sesión -->
-  <button type="submit" class="btn btn-primary" (click)="tryLogin(loginForm.value)">Iniciar Sesión</button>
+    <!-- Botón iniciar sesión -->
+    <button type="submit" class="btn btn-primary" (click)="tryLogin(loginForm.value)">Iniciar Sesión</button>
 
 
-  <!-- Enlace/button registro -->
-  <a class="btn btn-primary" routerLink='/registro' role="button">Registro</a>
+    <!-- Enlace/button registro -->
+    <a class="btn btn-primary" routerLink='/registro' role="button">Registro</a>
 
 
-</form>
+  </form>
+</div>

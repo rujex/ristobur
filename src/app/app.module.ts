@@ -25,6 +25,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
 import { FoodMenuComponent } from './components/food-menu/food-menu.component';
+import { EntrantesComponent } from './components/menu/entrantes/entrantes.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { FoodMenuComponent } from './components/food-menu/food-menu.component';
     JumbotronComponent,
     HomeComponent,
     LoginComponent,
-    FoodMenuComponent
+    FoodMenuComponent,
+    EntrantesComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

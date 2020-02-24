@@ -1,13 +1,9 @@
-form{
-	width: 300px;
-	height: 500px;
-	margin-top: 7%;
-	margin-left: 30%;
-}
-.btn{
-	margin-left: 10px;
-}
+/*
+*	Nombre y logo
+*/
+
 .name{
+	display: block;
 	margin-left: 15px;
 	margin-top: 20px;
 	float: left;
@@ -17,5 +13,26 @@ form{
 	font-size: 25px;
 }
 .logo{
+	display: block;
 	float: left;
+}
+
+/*
+*	Div login
+*/
+.container{
+	display: block;
+	margin-top: 10%;
+}
+
+/*
+* Formulario
+*/
+form{
+	width: 230px;
+	height: 400px;
+	margin-left: 35%;
+}
+.btn{
+	margin-left: 10px;
 }
