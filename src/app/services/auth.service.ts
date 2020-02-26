@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
     
+	public userData$: Observable<firebase.User>;
 
-	constructor(private router: Router){}
+	constructor(private router: Router, private auth: AngularFireAuth){
+		this.userData$ = this.auth.authState;
+	}
 
 
     /*
@@ -33,7 +37,7 @@ export class AuthService {
  	doLogin(value){
 	   return firebase.auth().signInWithEmailAndPassword(value.email, value.password)
 	     .then( (result) => {
-	       this.router.navigate(['menu']);
+	       this.router.navigate(['/menu']);
 	     }).catch( (error) => {
 	     	window.alert(error.message)
 	     })
@@ -47,4 +51,8 @@ export class AuthService {
  			this.router.navigate(['login']);
  		});
  	}
+
+ 	getUser(){
+        return this.auth.user;
+    }
 }

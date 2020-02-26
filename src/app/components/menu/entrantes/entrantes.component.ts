@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FirebaseService } from '../../../services/firebase.service';
+import { AuthService } from '../../../services/auth.service';
 
 import { Entrantes } from '../../../models/entrantes';
 
@@ -20,7 +21,7 @@ export class EntrantesComponent implements OnInit {
   user;
   pedidos = ['melocoton', 'carne'];	
 
-  constructor(private firebaseService: FirebaseService, private router: Router) { 
+  constructor(private firebaseService: FirebaseService, private authService: AuthService, private router: Router) { 
 
   	this.count = 0;
   	this.cartTotal = 0;
@@ -29,7 +30,7 @@ export class EntrantesComponent implements OnInit {
 
   ngOnInit() {
   	this.entrantes = this.firebaseService.getEntrantes();
-  	this.firebaseService.getUser().subscribe( (user) => {
+  	this.authService.getUser().subscribe( (user) => {
   		console.log(user.email)
   		this.user = user.email;
   	})

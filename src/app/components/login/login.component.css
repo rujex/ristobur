@@ -1,7 +1,6 @@
 /*
 *	Nombre y logo
 */
-
 .name{
 	display: block;
 	margin-left: 15px;
@@ -29,10 +28,37 @@
 * Formulario
 */
 form{
-	width: 230px;
+	width: 300px;
 	height: 400px;
 	margin-left: 35%;
 }
+.form-group-pass{
+	margin-bottom: -3px;
+}
+.enter{
+	margin-top: 20px;
+}
 .btn{
+	width: 300px;
+}
+.icons{
+	margin-right: 10px;
+}
+.link-recover-pass{
+	margin-left: 180px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.no-account{
+	float:left;
+	font-size: 12px;
+	margin-left: 50px;
+	margin-top: 20px;
+}
+.register{
+	float: left;
 	margin-left: 10px;
+	margin-top: 20px;
+	font-size: 12px;
+	font-weight: bold;
 }

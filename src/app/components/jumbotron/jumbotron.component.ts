@@ -42,7 +42,6 @@ export class JumbotronComponent implements OnInit {
 
      this.dataService.variable.subscribe( dato => {
        this.isCheck = dato;
-       console.log(dato);
      });
 
 

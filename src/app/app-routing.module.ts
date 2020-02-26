@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FoodMenuComponent } from './components/food-menu/food-menu.component';
 import { EntrantesComponent } from './components/menu/entrantes/entrantes.component';
 import { CartComponent } from './components/cart/cart.component';
+import { GuardService } from './services/guard.service';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
 	},
 	{
 		path: 'menu',
-		component: FoodMenuComponent
+		component: FoodMenuComponent,
+		canActivate: [GuardService]
 	},
 	{
 		path: 'Entrantes',

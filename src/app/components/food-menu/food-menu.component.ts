@@ -31,11 +31,6 @@ export class FoodMenuComponent implements OnInit {
   }
 
 
-  /*
-  * Cierra sesión
-  */
-  signOut() {
-  	this.authService.doLogout();
-  }
+ 
 
 }

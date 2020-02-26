@@ -57,9 +57,7 @@ export class FirebaseService {
         return this.db.collection<Entrantes>(this.pathEntrantes).valueChanges();
     }
 
-    getUser(){
-        return this.auth.user;
-    }
+    
 
     getCart(email){
        console.log('el email' + email);

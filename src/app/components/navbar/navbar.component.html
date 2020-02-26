@@ -8,29 +8,37 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a (click)="metodo()" class="navbar-brand" routerLink="">
-          <img src="../assets/images/menu.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+        <a (click)="metodo()" class="navbar-brand" routerLink="/menu">
+          <img src="../assets/images/menu.png" width="20" height="20" class="icon d-inline-block align-top" alt="" style="margin-right: 7px">
           Menú
         </a>
       </li>
       <li class="nav-item">
         <a class="navbar-brand" routerLink="">
-          <img src="../assets/images/pedidos.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          <img src="../assets/images/pedidos.png" width="20" height="20" class="icon d-inline-block align-top" alt="">
           Mis pedidos
         </a>
       </li>
       <li class="nav-item">
         <a class="navbar-brand" routerLink="">
-          <img src="../assets/images/novedades.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          <img src="../assets/images/novedades.png" width="20" height="20" class="icon d-inline-block align-top" alt="">
           Novedades
         </a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="!isLogged; else disconnect" class="nav-item">
         <a class="navbar-brand" routerLink="/login">
-          <img src="../assets/images/usuario.png" width="20" height="20" class="d-inline-block align-top" alt="" style="margin-right: 7px">
+          <img src="../assets/images/usuario.png" width="20" height="20" class="icon d-inline-block align-top" alt="">
           Entrar
         </a>
       </li>
+      <ng-template #disconnect>
+        <li class="nav-item">
+        <a class="navbar-brand" role="button" (click)="signOut()" routerLink="/login">
+          <img src="../assets/images/usuario.png" width="20" height="20" class="icon d-inline-block align-top" alt="">
+          Desconectar
+        </a>
+      </li>
+      </ng-template>
     </ul>
   </div>
 </nav>

@@ -8,14 +8,14 @@
 
 <!-- Bloque login -->
 <div class="container">
-  
+
   <!-- Formulario -->
   <form [formGroup]="loginForm">
     
     <!-- Email -->
     <div class="form-group">
       <label for="exampleInputEmail1">
-              Email
+              <img class="icons" src="../../assets/images/email.png" width="20" height="20" alt="email">Email
       </label>
       <input type="email" class="form-control" 
              formControlName="email" id="exampleInputEmail1" 
@@ -25,8 +25,10 @@
 
 
     <!-- Contraseña -->
-    <div class="form-group">
-      <label for="exampleInputPassword1">Contraseña</label>
+    <div class="form-group-pass">
+      <label for="exampleInputPassword1">
+          <img class="icons" src="../../assets/images/password.png" width="17" height="17" alt="password">Contraseña
+      </label>
       <input type="password" class="form-control"
              formControlName="password" id="exampleInputPassword1"
              required>
@@ -37,13 +39,14 @@
     <label class="error">{{errorMessage}}</label>
     <label class="success">{{successMessage}}</label>
 
+    <a class="link-recover-pass text-dark" routerLink=''>Recuperar contraseña</a>
 
-    <!-- Botón iniciar sesión -->
-    <button type="submit" class="btn btn-primary" (click)="tryLogin(loginForm.value)">Iniciar Sesión</button>
+    <button type="submit" class="enter btn btn-dark" (click)="tryLogin(loginForm.value)">Entrar</button>
+   
 
-
-    <!-- Enlace/button registro -->
-    <a class="btn btn-primary" routerLink='/registro' role="button">Registro</a>
+    <p class="no-account">¿Aún no tienes cuenta?</p>
+    
+    <a class="register text-dark" routerLink='/registro'>Regístrate</a>
 
 
   </form>
