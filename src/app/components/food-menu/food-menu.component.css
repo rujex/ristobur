@@ -10,3 +10,23 @@
 .logo{
 	float: left;
 }
+
+ul{
+	width: 702px;
+	margin-top: 80px;
+	margin-left: 211px;
+	list-style-type: none;
+	text-align: center;
+}
+
+a{
+	color: black;
+	font-size: 30px;
+	font-family: 'Bitter';
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+p{
+	text-align: center;
+}

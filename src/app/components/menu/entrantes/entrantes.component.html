@@ -6,7 +6,7 @@
 <app-navbar></app-navbar>
 
 <br/>
-
+<!--
 <div style="margin-left: 50px;margin-top: 100px;">
 	<h1>Entrantes</h1>
 
@@ -34,4 +34,41 @@
 	<button (click)="doOrder(entrante.nombre)" style="margin-top: 15px">Añadir al carrito</button>
 
 	</ul>
+</div>
+-->
+
+
+<!-- Tarjeta muestra entrantes -->
+<div *ngFor="let entrante of entrantes | async" class="card" style="width: 400px; margin-top: 100px; margin-left: 360px">
+  <img src="{{entrante.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{entrante.nombre}}</h5>
+    <p class="card-text">{{entrante.descripcion}}</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  	 Añadir a la carta
+	</button>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngFor="let entrante of entrantes | async" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">{{entrante.nombre}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Precio: {{entrante.precio}}€</p>
+        Cantidad: <input type="text" [(ngModel)]="cantidad" name="cantidad" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="doOrder(entrante.nombre)" class="btn btn-primary">Pedir</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -7,11 +7,15 @@
 
 <br/>
 
-<ul>
-	<li *ngFor="let menu of menu | async">
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let menu of menu | async">
+		<img style="display: block; margin: auto;" src="{{menu.image}}" width="150" height="100">
 		<a routerLink='/{{menu.tipo}}'>
 			{{menu.tipo}}
 		</a>
+		<p>{{menu.description}}</p>
 	</li>
 </ul>
+
+
 

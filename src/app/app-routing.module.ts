@@ -14,28 +14,28 @@ import { GuardService } from './services/guard.service';
 const routes: Routes = [
 	{
 		path: '',
-		component: HomeComponent 
+		loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) 
 	},
 	{
 		path: 'login',
-	 	component: LoginComponent
+	 	loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
 	},
 	{
 		path: 'registro',
-		component: RegisterComponent
+		loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule)
 	},
 	{
 		path: 'menu',
-		component: FoodMenuComponent,
+		loadChildren: () => import('./components/food-menu/food-menu.module').then(m => m.FoodMenuModule),
 		canActivate: [GuardService]
 	},
 	{
 		path: 'Entrantes',
-		component: EntrantesComponent
+		loadChildren: () => import('./components/menu/entrantes/entrantes.module').then(m => m.EntrantesModule)
 	},
 	{
 		path: 'cart',
-		component: CartComponent
+		loadChildren: () => import('./components/cart/cart.module').then(m => m.CartModule)
 	},
 	{
 		path: '**',
