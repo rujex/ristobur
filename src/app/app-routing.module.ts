@@ -1,28 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
-import { FoodMenuComponent } from './components/food-menu/food-menu.component';
-import { EntrantesComponent } from './components/menu/entrantes/entrantes.component';
-import { CartComponent } from './components/cart/cart.component';
-import { GuardService } from './services/guard.service';
+import { GuardService } from './shared/guards/guard.service';
 
 
 const routes: Routes = [
 	{
 		path: '',
-		loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) 
+		loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
 	},
 	{
 		path: 'login',
-	 	loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
+	 	loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule)
 	},
 	{
 		path: 'registro',
-		loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule)
+		loadChildren: () => import('./components/auth/register/register.module').then(m => m.RegisterModule)
 	},
 	{
 		path: 'menu',

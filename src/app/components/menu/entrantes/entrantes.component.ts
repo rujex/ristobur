@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FirebaseService } from '../../../services/firebase.service';
-import { AuthService } from '../../../services/auth.service';
-import { DataService } from '../../../services/data.service';
+import { FirebaseService } from '../../../shared/services/firebase.service';
+import { AuthService } from '../../../shared/services/auth.service';
+import { DataService } from '../../../shared/services/data.service';
 
-import { Entrantes } from '../../../models/entrantes';
+import { Entrantes } from '../../../shared/models/entrantes';
 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../../services/auth.service';
-import { FirebaseService } from '../../services/firebase.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
-import { Menu } from '../../models/menu';
+import { Menu } from '../../shared/models/menu';
 
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+
 import { Observable } from 'rxjs';
 
 @Component({
@@ -31,6 +31,6 @@ export class FoodMenuComponent implements OnInit {
   }
 
 
- 
+
 
 }
