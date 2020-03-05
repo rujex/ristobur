@@ -26,10 +26,6 @@ export class CartComponent implements OnInit {
   ngOnInit() {
      this.isOrder = this.dataService.getIsOrder();
 
-     if(this.isOrder){
-       this.toastr.success("El pedido ha sido enviado.")
-     }
-
   	 this.authService.getUser().subscribe( user => {
   	 	this.user = user.email;
   	 	console.log(this.user);

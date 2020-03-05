@@ -6,10 +6,9 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 export class DataService {
 
   variable = new EventEmitter<boolean>();
-  //@Output() isOrder = new EventEmitter<boolean>();
   isOrder: boolean;
 
-  constructor() { 
+  constructor() {
   	this.isOrder = false;
   }
 

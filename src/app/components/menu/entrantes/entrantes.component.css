@@ -10,3 +10,10 @@
 .logo{
 	float: left;
 }
+.card{
+  margin-bottom: -75px;
+}
+button{
+  display: block;
+  margin-top: 5px;
+}

@@ -29,7 +29,16 @@ const routes: Routes = [
 	{
 		path: 'cart',
 		loadChildren: () => import('./components/cart/cart.module').then(m => m.CartModule)
-	},
+  },
+  {
+    path: 'orders',
+    loadChildren: () => import('./components/orders/orders.module').then(m => m.OrdersModule),
+    canActivate: [GuardService]
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./components/news/news.module').then(m => m.NewsModule)
+  },
 	{
 		path: '**',
 		redirectTo: ''

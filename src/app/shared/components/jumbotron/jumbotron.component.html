@@ -1,9 +1,25 @@
-<div style="float: left">
+<div class="jumbotron">
+  <img class="img-fluid" src="https://okdiario.com/img/2019/05/27/dia-mundial-de-la-hamburguesa-655x368.jpg" width="450" height="250">
+  <h1 class="display-6">El restaurante que está de moda 👌</h1>
+  <p class="lead">Estás viendo tu serie favorita o un partido de fútbol y te da pereza hacerte de comer.
+    Te entiendo, Ristobur es la solución. Haz tus pedidos en un click. ¿A qué estás esperando?</p>
+
+  <p>Por cada pedido que hagas acumulas puntos que podrás canjear.</p>
+  <a class="btn btn-dark btn-lg botonOrder" routerLink="/menu" role="button">Haz tu pedido</a>
+</div>
+
+
+
+
+
+<!--
+
+  <div style="float: left">
 
 	<h1 class="title">¡PIDE ONLINE!</h1>
 	<p>Indícanos tu dirección para ofrecerte opciones en los locales más cercanos</p>
 
-	<!-- Buscador -->
+	 Buscador
 	<img src="../assets/images/buscador.png" alt="buscador">
 	<input type="text" [(ngModel)]="buscador" (keydown)="search($event)">
 	<ul *ngFor="let ciudad of ciudades" >
@@ -15,22 +31,24 @@
 	</div>
 
 
-	<!-- <input #direction
+	<input #direction
 		   (keyup.enter)="checkDirection(direction.value)"
 	 	   type="text"
 	 	   placeholder="Escribe tu dirección completa..."
 	 	   class="buscador"
 	>
-	-->
 
-	<!-- Mensaje 
+
+ Mensaje
 		<span *ngIf="isCheck || direction == undefined">
 			Escribe tu dirección y selecciona una tienda para ver el menú
 		</span>
 
--->
-		
+
+
 
 </div>
 
 <img src="../assets/images/hamburguesa.png" width="300px" height="300px" class="hamburguesa">
+
+-->

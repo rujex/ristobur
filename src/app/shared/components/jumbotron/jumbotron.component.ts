@@ -13,7 +13,7 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./jumbotron.component.css']
 })
 export class JumbotronComponent implements OnInit {
-	
+
   direction: string;
   isCheck: boolean = false;
   restaurantes: any;
@@ -26,17 +26,17 @@ export class JumbotronComponent implements OnInit {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
 
-  constructor(private dataService: DataService, private firebaseService: FirebaseService) { 
+  constructor(private dataService: DataService, private firebaseService: FirebaseService) {
   }
 
   ngOnInit() {
-
+    /*
     combineLatest(this.startobs, this.endobs).subscribe((value) => {
         this.firebaseService.firequery(value[0], value[1]).subscribe((ciudades) => {
            this.ciudades = ciudades;
         })
     })
-
+    */
     this.getRestaurantesList();
 
 
@@ -46,16 +46,16 @@ export class JumbotronComponent implements OnInit {
 
 
   }
-
+/*
   search($event) {
     let q = $event.target.value;
     if(q != ''){
       this.startAt.next(q);
       this.endAt.next(q + "\uf8ff");
     }
-    
-  }
 
+  }
+*/
 
   getRestaurantesList(){
     this.firebaseService.getRestaurantesList().snapshotChanges().pipe(
@@ -75,7 +75,7 @@ export class JumbotronComponent implements OnInit {
   * Comprobar dirección
   */
     checkDirection(direction: string){
-      
+
   	if( direction == '' || direction == null || direction == undefined ){
   		this.isCheck = true;
   	}else{

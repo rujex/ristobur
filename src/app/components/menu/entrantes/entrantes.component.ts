@@ -25,14 +25,17 @@ export class EntrantesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cantidad = 5;
   	this.entrantes = this.firebaseService.getEntrantes();
   	this.authService.getUser().subscribe( (user) => {
   		this.user = user.email;
-  	})
+    })
+
   }
 
-  doOrder(nombre){
-    this.firebaseService.addCart(this.user, nombre, this.cantidad);
+  doOrder(nombre, precio){
+    var total = this.cantidad * precio;
+    this.firebaseService.addCart(this.user, nombre, this.cantidad, total);
     this.isOrder = true;
     this.dataService.setIsOrder(this.isOrder);
     this.router.navigate(['/cart']);

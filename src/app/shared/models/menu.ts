@@ -1,3 +1,5 @@
 export interface Menu{
-	tipo: string;
+  tipo: string;
+  image: string;
+  description: string;
 }

@@ -20,16 +20,19 @@ export class FirebaseService {
     private pathCart = '/cart';
 
 
-
 	restaurantesRef: AngularFirestoreCollection<Restaurante>;
     menuRef: AngularFirestoreCollection<Menu>;
     private cartDoc: AngularFirestoreDocument<Cart>;
     private cartRef;
-    
+
+
+
+
     constructor(private db: AngularFirestore, private auth: AngularFireAuth ){
     	this.restaurantesRef = db.collection(this.pathRestaurants);
         this.menuRef = db.collection(this.pathMenu);
         this.cartRef = db.collection(this.pathCart);
+
     }
 
     /*
@@ -57,16 +60,27 @@ export class FirebaseService {
         return this.db.collection<Entrantes>(this.pathEntrantes).valueChanges();
     }
 
-    
-
     getCart(email){
        console.log('el email' + email);
        return this.db.doc<Cart>('cart/'+email).valueChanges();
     }
 
-    addCart(email,producto, cantidad) {
-       this.cartRef.doc(email).set({producto: producto, cantidad: cantidad, });
+    // params: email, producto, cantidad
+    addCart(email,producto,cantidad, total ) {
+
+      var pruebaCollection = this.cartRef.doc(email).collection(producto)
+      const id = this.db.createId();
+      var newDoc = pruebaCollection.doc(id);
+
+      newDoc.set({
+        cantidad: cantidad,
+        total: total
+      }).then(function () {
+              console.log('Documento añadido');
+        }).catch(function (error) {
+              console.error('Error adding document: ', error);
+            });
     }
-    
-   
+
+
 }

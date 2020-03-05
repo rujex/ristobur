@@ -3,6 +3,7 @@ import { CanActivate } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class GuardService implements CanActivate{
   isLogged: boolean;
 
 
-  constructor(private authService: AuthService, private router: Router) {
-  	
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
+
   }
 
   canActivate() {
@@ -21,7 +22,9 @@ export class GuardService implements CanActivate{
     return this.authService.userData$.pipe(
       map( user => {
         if(!user){
-          alert('No has iniciado sesión');
+          this.toastr.info('No has iniciado sesión', '', {
+            positionClass: 'toast-top-center'
+          });
           this.router.navigate(['/login']);
           return false;
         }
