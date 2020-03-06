@@ -14,36 +14,33 @@
     <h5 class="card-title">{{entrante.nombre}}</h5>
     <p class="card-text">{{entrante.descripcion}}</p>
     <p class="card-text">{{entrante.precio}}€</p>
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="modal">
-  	 Añadir a la carta
+    <button type="button" (click)="getEntrante(entrante.id)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+  	 Pedir
 	</button>
   </div>
+
 </div>
 
-<!--
-   (click)="doOrder(entrante.nombre, entrante.precio)"
-   Cantidad <input type="number" [(ngModel)]="cantidad" name="cantidad" value="1" min="1" max="10" step="1">
--->
 
 <!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{nombreEntrante}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <h3>Selecciona la cantidad</h3>
+        Cantidad <input type="number" [(ngModel)]="cantidad" name="cantidad" value="1" min="1" max="10" step="1">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="doOrder(nombreEntrante, precioEntrante)" class="btn btn-primary" data-dismiss="modal" data-backdrop="false">Añadir al carro</button>
       </div>
     </div>
   </div>
 </div>
-
 

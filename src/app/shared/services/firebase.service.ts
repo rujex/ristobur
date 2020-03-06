@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Menu } from '../models/menu';
 import { Entrantes } from '../models/entrantes';
@@ -55,9 +56,28 @@ export class FirebaseService {
     getMenuList(){
         return this.db.collection<Menu>(this.pathMenu).valueChanges();
     }
-
+    // devuelve los entrantes
     getEntrantes(){
-        return this.db.collection<Entrantes>(this.pathEntrantes).valueChanges();
+      return  this.db.collection<Entrantes>(this.pathEntrantes)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Entrantes;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+
+    }
+
+    getEntrante(id){
+      return this.db.collection('menu').doc('1').collection('Entrantes').doc<Entrantes>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Entrantes;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
     }
 
     getCart(email){
@@ -65,8 +85,7 @@ export class FirebaseService {
        return this.db.doc<Cart>('cart/'+email).valueChanges();
     }
 
-    // params: email, producto, cantidad
-    addCart(email,producto,cantidad, total ) {
+    addCart(email,producto,cantidad,total) {
 
       var pruebaCollection = this.cartRef.doc(email).collection(producto)
       const id = this.db.createId();
@@ -77,10 +96,12 @@ export class FirebaseService {
         total: total
       }).then(function () {
               console.log('Documento añadido');
-        }).catch(function (error) {
+      }).catch(function (error) {
               console.error('Error adding document: ', error);
-            });
+      });
     }
+
+
 
 
 }
