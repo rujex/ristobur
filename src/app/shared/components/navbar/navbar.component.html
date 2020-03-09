@@ -49,6 +49,6 @@
   <p class="seleccion">Aún no seleccionado</p>
 </div>
 
-<div class="shop">
+<div [ngClass]="{'shop': !isOrder, 'allow-shop': isOrder}">
   <img src="../assets/images/productos.png" class="productos" width="30" height="30">
 </div>

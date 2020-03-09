@@ -54,7 +54,7 @@ export class EntrantesComponent implements OnInit {
   doOrder(nombre, precio){
     var total = this.cantidad * precio;
     this.firebaseService.addCart(this.user, nombre, this.cantidad, total);
-    this.isOrder = true;
+    this.dataService.setIsOrder(this.isOrder = true);
     this.router.navigate(['/menu']);
     this.toastr.success(nombre + ' añadido al carro', '', {
       positionClass: 'toast-top-center',

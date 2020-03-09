@@ -79,13 +79,30 @@ export class FirebaseService {
         })
       );
     }
-
+    /*
+    * Devuelve el documento email de la coleccion carta
+    * @return id, data
+    */
     getCart(email){
-       console.log('el email' + email);
-       return this.db.doc<Cart>('cart/'+email).valueChanges();
+       return  this.db.collection('cart/').doc(email)
+       .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Cart;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
     }
-
+    /*
+    * Añade un campo al documento email
+    * Añade la cantidad y el total a un documento de la coleccion producto
+    * @params email, producto, cantidad, total
+    */
     addCart(email,producto,cantidad,total) {
+
+      this.cartRef.doc(email).set({
+        isOrder: true
+      })
 
       var pruebaCollection = this.cartRef.doc(email).collection(producto)
       const id = this.db.createId();

@@ -1,4 +1,7 @@
 export interface Cart {
-	producto: string,
-	cantidad: number
+  id: string,
+  producto: string,
+  cantidad: number,
+  total: number,
+  isOrder: boolean
 }
