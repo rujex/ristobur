@@ -94,9 +94,9 @@ export class FirebaseService {
       );
     }
     /*
-    * Añade un campo al documento email
+    * Añade isOrder al documento email
     * Añade la cantidad y el total a un documento de la coleccion producto
-    * @params email, producto, cantidad, total
+    * @param email, producto, cantidad, total
     */
     addCart(email,producto,cantidad,total) {
 
@@ -114,7 +114,7 @@ export class FirebaseService {
       }).then(function () {
               console.log('Documento añadido');
       }).catch(function (error) {
-              console.error('Error adding document: ', error);
+              console.error('Error añadiendo el documentento: ', error);
       });
     }
 

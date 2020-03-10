@@ -1,11 +1,10 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  variable = new EventEmitter<boolean>();
   isOrder: boolean;
 
   constructor() {

@@ -8,13 +8,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a (click)="metodo()" class="navbar-brand" routerLink="/menu">
-          <img src="../assets/images/menu.png" width="20" height="20" class="icon d-inline-block align-top" alt="" style="margin-right: 7px">
+        <a class="navbar-brand" routerLink="/">
+          <img src="../assets/images/home.png" width="20" height="20" class="icon d-inline-block align-top" alt="" style="margin-right: 4px">
+          Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/menu">
+          <img src="../assets/images/menu.png" width="20" height="20" class="icon d-inline-block align-top" alt="" style="margin-right: 4px">
           Menú
         </a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" routerLink="/orders">
+        <a class="navbar-brand" routerLink="/cart">
           <img src="../assets/images/pedidos.png" width="20" height="20" class="icon d-inline-block align-top" alt="">
           Mis pedidos
         </a>
@@ -49,6 +55,10 @@
   <p class="seleccion">Aún no seleccionado</p>
 </div>
 
-<div [ngClass]="{'shop': !isOrder, 'allow-shop': isOrder}">
-  <img src="../assets/images/productos.png" class="productos" width="30" height="30">
-</div>
+
+  <a routerLink="/cart" (click)="checkShop()">
+    <div [ngClass]="{'shop': !isOrder, 'allow-shop': isOrder}">
+    <img src="../assets/images/productos.png" class="productos" width="30" height="30">
+    </div>
+  </a>
+

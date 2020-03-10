@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { map } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
-import {combineLatest} from "rxjs/index";
 
-import { DataService } from '../../services/data.service';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -26,7 +24,7 @@ export class JumbotronComponent implements OnInit {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
 
-  constructor(private dataService: DataService, private firebaseService: FirebaseService) {
+  constructor(private firebaseService: FirebaseService) {
   }
 
   ngOnInit() {
@@ -38,13 +36,6 @@ export class JumbotronComponent implements OnInit {
     })
     */
     this.getRestaurantesList();
-
-
-     this.dataService.variable.subscribe( dato => {
-       this.isCheck = dato;
-     });
-
-
   }
 /*
   search($event) {
