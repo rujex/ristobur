@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
           this.isLogged = false;
   			}else{
           this.isLogged = true;
-          this.firebase.getCart(this.user).subscribe( (check) => {
+          this.firebase.getIsOrder(this.user).subscribe( (check) => {
             if(check.isOrder == null || check.isOrder == undefined){
               this.isOrder = false;
             }else{

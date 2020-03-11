@@ -81,9 +81,10 @@ export class FirebaseService {
     }
     /*
     * Devuelve el documento email de la coleccion carta
+    * para recuperar el campo isOrder
     * @return id, data
     */
-    getCart(email){
+    getIsOrder(email){
        return  this.db.collection('cart/').doc(email)
        .snapshotChanges().pipe(
         map(action => {
@@ -93,22 +94,30 @@ export class FirebaseService {
         })
       );
     }
+    getCart(email) {
+      return this.db.collection('cart');
+    }
     /*
     * Añade isOrder al documento email
     * Añade la cantidad y el total a un documento de la coleccion producto
     * @param email, producto, cantidad, total
     */
     addCart(email,producto,cantidad,total) {
+      this.db.collection(email).doc(producto).set({
+        isOrder: true,
+        producto: producto,
+        cantidad: cantidad,
+        total: total
+      });
+    }
 
-      this.cartRef.doc(email).set({
-        isOrder: true
-      })
-
+      /*
       var pruebaCollection = this.cartRef.doc(email).collection(producto)
       const id = this.db.createId();
       var newDoc = pruebaCollection.doc(id);
 
       newDoc.set({
+        producto: producto,
         cantidad: cantidad,
         total: total
       }).then(function () {
@@ -118,7 +127,7 @@ export class FirebaseService {
       });
     }
 
-
+    */
 
 
 }

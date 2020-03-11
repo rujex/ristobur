@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CartComponent implements OnInit {
 
-	products: Observable<Cart>;
+	products: Observable<any>;
 	user;
   isOrder: boolean;
 
@@ -28,8 +28,7 @@ export class CartComponent implements OnInit {
 
   	 this.authService.getUser().subscribe( user => {
   	 	this.user = user.email;
-  	 	console.log(this.user);
-  	 	this.products = this.firebaseService.getCart(this.user);
+  	 	this.firebaseService.getCart(this.user)
   	 })
   }
 
