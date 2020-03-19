@@ -85,21 +85,14 @@ export class FirebaseService {
     * @return id, data
     */
     getIsOrder(email){
-       return  this.db.collection('cart/').doc(email)
-       .snapshotChanges().pipe(
-        map(action => {
-          const data = action.payload.data() as Cart;
-          const id = action.payload.id;
-          return {id, ...data};
-        })
-      );
+      return this.db.collection<Cart>(email).valueChanges();
     }
     getCart(email) {
-      return this.db.collection('cart');
+      return this.db.collection<Cart>(email).valueChanges();
     }
     /*
-    * Añade isOrder al documento email
-    * Añade la cantidad y el total a un documento de la coleccion producto
+    * Añade isOrder al documento producto
+    * Añade la cantidad, el total y el producto a un documento de la coleccion email
     * @param email, producto, cantidad, total
     */
     addCart(email,producto,cantidad,total) {
@@ -111,23 +104,6 @@ export class FirebaseService {
       });
     }
 
-      /*
-      var pruebaCollection = this.cartRef.doc(email).collection(producto)
-      const id = this.db.createId();
-      var newDoc = pruebaCollection.doc(id);
-
-      newDoc.set({
-        producto: producto,
-        cantidad: cantidad,
-        total: total
-      }).then(function () {
-              console.log('Documento añadido');
-      }).catch(function (error) {
-              console.error('Error añadiendo el documentento: ', error);
-      });
-    }
-
-    */
 
 
 }

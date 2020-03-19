@@ -17,19 +17,36 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CartComponent implements OnInit {
 
-	products: Observable<any>;
+	products: Observable<Cart[]>;
 	user;
   isOrder: boolean;
+  total: number;
 
-  constructor(private firebaseService: FirebaseService, private authService: AuthService, private dataService: DataService, private toastr: ToastrService) { }
+  constructor(private firebaseService: FirebaseService, private authService: AuthService,
+              private dataService: DataService, private toastr: ToastrService) {
+                this.total = 0;
+               }
 
   ngOnInit() {
      this.isOrder = this.dataService.getIsOrder();
 
   	 this.authService.getUser().subscribe( user => {
-  	 	this.user = user.email;
-  	 	this.firebaseService.getCart(this.user)
-  	 })
+
+       this.user = user.email;
+
+       this.products = this.firebaseService.getCart(this.user);
+
+       this.products.forEach(object => {
+        object.forEach(dato => {
+          console.log('variable dato.total: ' + dato.total);
+          this.total += dato.total;
+          console.log('variable total: ' + this.total);
+        })
+      })
+
+     })
+
+
   }
 
 }

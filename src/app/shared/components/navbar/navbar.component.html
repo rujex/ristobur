@@ -58,6 +58,7 @@
 
   <a routerLink="/cart" (click)="checkShop()">
     <div [ngClass]="{'shop': !isOrder, 'allow-shop': isOrder}">
+    <p class="pedidos">{{count}}</p>
     <img src="../assets/images/productos.png" class="productos" width="30" height="30">
     </div>
   </a>

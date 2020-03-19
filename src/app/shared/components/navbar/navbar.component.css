@@ -34,7 +34,8 @@
 	margin-right: 50px;
 }
 a{
-	margin-top: 5px;
+  margin-top: 5px;
+  text-decoration: none;
 }
 .info-menu{
 	float: left;
@@ -84,5 +85,15 @@ a{
 .productos{
 	display: block;
 	margin: auto;
-	margin-top: 12px;
+	margin-top: -16px;
+}
+.pedidos{
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 22px;
+  color: white;
+  font-weight: 900;
 }

@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 import { FirebaseService } from '../../services/firebase.service';
 
+import { Observable } from 'rxjs';
+
+import { Cart } from '../../../shared/models/cart';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,8 +19,12 @@ export class NavbarComponent implements OnInit {
   isLogged: boolean;
   isOrder: boolean;
   user: string;
+  products: Observable<Cart[]>;
+  count: number;
 
-  constructor(private authService: AuthService, private firebase: FirebaseService, private router: Router) { }
+  constructor(private authService: AuthService, private firebase: FirebaseService, private router: Router) {
+    this.count = 0;
+   }
   /*
   * Se controlan las variables isLogged e isOrder en función de las condiciones
   */
@@ -27,12 +35,17 @@ export class NavbarComponent implements OnInit {
           this.isLogged = false;
   			}else{
           this.isLogged = true;
-          this.firebase.getIsOrder(this.user).subscribe( (check) => {
-            if(check.isOrder == null || check.isOrder == undefined){
-              this.isOrder = false;
-            }else{
-              this.isOrder = true;
-            }
+          this.products = this.firebase.getCart(this.user);
+          this.products.forEach((data) => {
+            this.count = data.length;
+            console.log(data.length)
+            data.forEach( (element) => {
+              if(element.isOrder == true){
+                this.isOrder = true;
+              }else {
+                this.isOrder = false;
+              }
+            })
           })
   			}
       })

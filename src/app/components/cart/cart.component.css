@@ -13,3 +13,14 @@
 .logo{
 	float: left;
 }
+.background{
+  background-color: white;
+  width: 700px;
+  height: 500px;
+  margin-left: 212px;
+  margin-top: 71px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+}
+h1{
+  text-align: center;
+}
