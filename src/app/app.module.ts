@@ -29,6 +29,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NewsComponent } from './components/news/news.component';
+import { TexmexComponent } from './components/menu/texmex/texmex.component';
 
 
 
@@ -43,7 +44,8 @@ import { NewsComponent } from './components/news/news.component';
     FoodMenuComponent,
     EntrantesComponent,
     CartComponent,
-    NewsComponent
+    NewsComponent,
+    TexmexComponent
   ],
   imports: [
     BrowserModule,

@@ -5,35 +5,35 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { DataService } from '../../../shared/services/data.service';
 import { ToastrService } from 'ngx-toastr';
 
-import { Entrantes } from '../../../shared/models/entrantes';
+import { Texmex } from '../../../shared/models/texmex';
 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-entrantes',
-  templateUrl: './entrantes.component.html',
-  styleUrls: ['./entrantes.component.css']
+  selector: 'app-texmex',
+  templateUrl: './texmex.component.html',
+  styleUrls: ['./texmex.component.css']
 })
-export class EntrantesComponent implements OnInit {
+export class TexmexComponent implements OnInit {
 
-  entrantes: Observable<Entrantes[]>;
-  nombreEntrante;
-  precioEntrante;
+  texmex: Observable<Texmex[]>;
+  nombreTexmex;
+  precioTexmex;
   user: string;
   cantidad: number;
   isOrder: boolean;
 
-  constructor(private firebaseService: FirebaseService, private authService: AuthService, private dataService: DataService, private router: Router, private toastr: ToastrService) {
+  constructor(private firebaseService: FirebaseService, private authService: AuthService,
+     private dataService: DataService, private router: Router, private toastr: ToastrService) {
   }
   /*
   * inicializo la variable cantidad
-  * entrantes contiene el id
+  * texmex contiene el id
   */
   ngOnInit() {
     this.cantidad = 1;
-    this.entrantes = this.firebaseService.getEntrantes();
+    this.texmex = this.firebaseService.getTexmex();
   	this.authService.getUser().subscribe( (user) => {
   		this.user = user.email;
     })
@@ -44,22 +44,23 @@ export class EntrantesComponent implements OnInit {
   * Guardo el nombre y el precio segun el id
   * @params id
   */
-  getEntrante(id){
-    this.firebaseService.getEntrante(id).subscribe( (dato) =>{
-      this.nombreEntrante = dato.name;
-      this.precioEntrante = dato.price;
+  getTexmex(id){
+    this.firebaseService.getOneTexMex(id).subscribe( (dato) =>{
+      this.nombreTexmex = dato.name;
+      this.precioTexmex = dato.price;
     })
   }
 
   doOrder(nombre, precio){
     var total = this.cantidad * precio;
     this.firebaseService.addCart(this.user, nombre, this.cantidad, total);
-    this.dataService.setIsOrder(this.isOrder = true);
+    //this.dataService.setIsOrder(this.isOrder = true);
     this.router.navigate(['/menu']);
     this.toastr.success(nombre + ' añadido al carro', '', {
       positionClass: 'toast-top-center',
     });
-    this.dataService.setIsOrder(this.isOrder);
+    //this.dataService.setIsOrder(this.isOrder);
   }
+
 
 }

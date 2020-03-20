@@ -25,7 +25,11 @@ const routes: Routes = [
 	{
 		path: 'Entrantes',
 		loadChildren: () => import('./components/menu/entrantes/entrantes.module').then(m => m.EntrantesModule)
-	},
+  },
+  {
+		path: 'TexMex',
+		loadChildren: () => import('./components/menu/texmex/texmex.module').then(m => m.TexmexModule)
+  },
 	{
 		path: 'cart',
 		loadChildren: () => import('./components/cart/cart.module').then(m => m.CartModule),

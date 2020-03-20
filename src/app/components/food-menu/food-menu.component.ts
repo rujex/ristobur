@@ -28,6 +28,7 @@ export class FoodMenuComponent implements OnInit {
   */
   ngOnInit() {
     this.menu = this.firebase.getMenuList();
+    this.menu.subscribe(dato => {console.log(dato.forEach(element => {console.log(element.tipo)}))});
   }
 
 

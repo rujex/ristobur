@@ -1,4 +1,4 @@
-export interface Entrantes{
+export interface Texmex{
   id: string;
 	name: string;
 	description: string;

@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
 
 import { Menu } from '../models/menu';
 import { Entrantes } from '../models/entrantes';
-import { Restaurante } from '../models/restaurante';
 import { Cart } from '../models/cart';
+import { Texmex } from '../models/texmex';
 
 
 @Injectable({providedIn: 'root'})
@@ -18,30 +18,17 @@ export class FirebaseService {
     private pathRestaurants = '/restaurantes';
     private pathMenu = '/menu';
     private pathEntrantes = '/menu/1/Entrantes';
+    private pathTexmex = '/menu/2/TexMex';
     private pathCart = '/cart';
 
-
-	restaurantesRef: AngularFirestoreCollection<Restaurante>;
-    menuRef: AngularFirestoreCollection<Menu>;
+    private menuRef: AngularFirestoreCollection<Menu>;
     private cartDoc: AngularFirestoreDocument<Cart>;
     private cartRef;
 
 
-
-
     constructor(private db: AngularFirestore, private auth: AngularFireAuth ){
-    	this.restaurantesRef = db.collection(this.pathRestaurants);
         this.menuRef = db.collection(this.pathMenu);
         this.cartRef = db.collection(this.pathCart);
-
-    }
-
-    /*
-	* Devuelve los restaurantes
-	* @return AngularFirestoreCollection<Restaurante> restaurantesRef
-    */
-    getRestaurantesList(): AngularFirestoreCollection<Restaurante> {
-    	return this.restaurantesRef;
     }
 
     /*
@@ -68,12 +55,35 @@ export class FirebaseService {
               );
 
     }
+    // devuelve los texmex
+    getTexmex(){
+      return  this.db.collection<Texmex>(this.pathTexmex)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Texmex;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+
+    }
 
     getEntrante(id){
       return this.db.collection('menu').doc('1').collection('Entrantes').doc<Entrantes>(id)
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Entrantes;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getOneTexMex(id){
+      return this.db.collection('menu').doc('2').collection('TexMex').doc<Texmex>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Texmex;
           const id = action.payload.id;
           return {id, ...data};
         })

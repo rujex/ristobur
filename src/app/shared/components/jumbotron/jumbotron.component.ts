@@ -35,7 +35,7 @@ export class JumbotronComponent implements OnInit {
         })
     })
     */
-    this.getRestaurantesList();
+    //this.getRestaurantesList();
   }
 /*
   search($event) {
@@ -48,7 +48,7 @@ export class JumbotronComponent implements OnInit {
   }
 */
 
-  getRestaurantesList(){
+ /* getRestaurantesList(){
     this.firebaseService.getRestaurantesList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -59,7 +59,7 @@ export class JumbotronComponent implements OnInit {
       this.restaurantes = restaurantes;
     });
   }
-
+*/
 
 
   /*
