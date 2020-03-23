@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Menu } from '../models/menu';
@@ -11,6 +10,10 @@ import { Entrantes } from '../models/entrantes';
 import { Cart } from '../models/cart';
 import { Texmex } from '../models/texmex';
 import { Carnes } from '../models/carnes';
+import { Ensaladas } from '../models/ensaladas';
+import { Costillas } from '../models/costillas';
+import { Pollos } from '../models/pollos';
+import { Sandwiches } from '../models/sandwiches';
 
 
 @Injectable({providedIn: 'root'})
@@ -21,6 +24,10 @@ export class FirebaseService {
     private pathEntrantes = '/menu/1/Entrantes';
     private pathTexmex = '/menu/2/TexMex';
     private pathCarnes = '/menu/4/Carnes';
+    private pathEnsaladas = '/menu/3/Ensaladas';
+    private pathCostillas = '/menu/5/Costillas';
+    private pathPollos = '/menu/6/Pollo';
+    private pathSandwiches = '/menu/7/Sandwiches';
     private pathCart = '/cart';
 
     private menuRef: AngularFirestoreCollection<Menu>;
@@ -70,7 +77,7 @@ export class FirebaseService {
 
     }
 
-    // devuelve los texmex
+    // devuelve las carnes
     getCarnes(){
       return  this.db.collection<Carnes>(this.pathCarnes)
               .snapshotChanges().pipe(
@@ -81,6 +88,54 @@ export class FirebaseService {
                 }))
               );
     }
+
+    // devuelve las ensaladas
+    getEnsaladas(){
+      return  this.db.collection<Ensaladas>(this.pathEnsaladas)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Ensaladas;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+    }
+
+     // devuelve las ensaladas
+     getCostillas(){
+      return  this.db.collection<Costillas>(this.pathCostillas)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Costillas;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+     }
+
+     // devuelve las ensaladas
+     getPollos(){
+      return  this.db.collection<Pollos>(this.pathPollos)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Pollos;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+     }
+
+     // devuelve las ensaladas
+     getSandwiches(){
+      return  this.db.collection<Sandwiches>(this.pathSandwiches)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Sandwiches;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+     }
 
     getEntrante(id){
       return this.db.collection('menu').doc('1').collection('Entrantes').doc<Entrantes>(id)
@@ -109,6 +164,50 @@ export class FirebaseService {
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Carnes;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getEnsalada(id){
+      return this.db.collection('menu').doc('3').collection('Ensalada').doc<Ensaladas>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Ensaladas;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getCostilla(id){
+      return this.db.collection('menu').doc('5').collection('Costillas').doc<Costillas>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Costillas;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getPollo(id){
+      return this.db.collection('menu').doc('6').collection('Pollos').doc<Pollos>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Pollos;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getSandwich(id){
+      return this.db.collection('menu').doc('7').collection('Sandwiches').doc<Sandwiches>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Sandwiches;
           const id = action.payload.id;
           return {id, ...data};
         })

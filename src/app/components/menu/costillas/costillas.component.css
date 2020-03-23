@@ -1,0 +1,19 @@
+.name{
+	margin-left: 15px;
+	margin-top: 20px;
+	float: left;
+	color: #2a2f23;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 3px;
+	font-size: 25px;
+}
+.logo{
+	float: left;
+}
+.card{
+  margin-bottom: -75px;
+}
+button{
+  display: block;
+  margin-top: 5px;
+}
