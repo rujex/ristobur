@@ -10,6 +10,7 @@ import { Menu } from '../models/menu';
 import { Entrantes } from '../models/entrantes';
 import { Cart } from '../models/cart';
 import { Texmex } from '../models/texmex';
+import { Carnes } from '../models/carnes';
 
 
 @Injectable({providedIn: 'root'})
@@ -19,6 +20,7 @@ export class FirebaseService {
     private pathMenu = '/menu';
     private pathEntrantes = '/menu/1/Entrantes';
     private pathTexmex = '/menu/2/TexMex';
+    private pathCarnes = '/menu/4/Carnes';
     private pathCart = '/cart';
 
     private menuRef: AngularFirestoreCollection<Menu>;
@@ -68,15 +70,27 @@ export class FirebaseService {
 
     }
 
+    // devuelve los texmex
+    getCarnes(){
+      return  this.db.collection<Carnes>(this.pathCarnes)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Carnes;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+    }
+
     getEntrante(id){
       return this.db.collection('menu').doc('1').collection('Entrantes').doc<Entrantes>(id)
-      .snapshotChanges().pipe(
-        map(action => {
-          const data = action.payload.data() as Entrantes;
-          const id = action.payload.id;
-          return {id, ...data};
-        })
-      );
+              .snapshotChanges().pipe(
+                map(action => {
+                  const data = action.payload.data() as Entrantes;
+                  const id = action.payload.id;
+                  return {id, ...data};
+                })
+             );
     }
 
     getOneTexMex(id){
@@ -84,6 +98,17 @@ export class FirebaseService {
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Texmex;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getCarne(id){
+      return this.db.collection('menu').doc('4').collection('Carnes').doc<Carnes>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Carnes;
           const id = action.payload.id;
           return {id, ...data};
         })

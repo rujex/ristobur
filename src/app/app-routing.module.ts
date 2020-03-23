@@ -30,6 +30,34 @@ const routes: Routes = [
 		path: 'TexMex',
 		loadChildren: () => import('./components/menu/texmex/texmex.module').then(m => m.TexmexModule)
   },
+  {
+		path: 'Carnes',
+		loadChildren: () => import('./components/menu/carnes/carnes.module').then(m => m.CarnesModule)
+  },
+  {
+		path: 'Costillas',
+		loadChildren: () => import('./components/menu/costillas/costillas.module').then(m => m.CostillasModule)
+  },
+  {
+		path: 'Ensaladas',
+		loadChildren: () => import('./components/menu/ensaladas/ensaladas.module').then(m => m.EnsaladasModule)
+  },
+  {
+		path: 'Hamburguesas',
+		loadChildren: () => import('./components/menu/hamburguesas/hamburguesas.module').then(m => m.HamburguesasModule)
+  },
+  {
+		path: 'Pollo',
+		loadChildren: () => import('./components/menu/pollo/pollo.module').then(m => m.PolloModule)
+  },
+  {
+		path: 'Postres',
+		loadChildren: () => import('./components/menu/postres/postres.module').then(m => m.PostresModule)
+  },
+  {
+		path: 'Sandwiches',
+		loadChildren: () => import('./components/menu/sandwiches/sandwiches.module').then(m => m.SandwichesModule)
+  },
 	{
 		path: 'cart',
 		loadChildren: () => import('./components/cart/cart.module').then(m => m.CartModule),

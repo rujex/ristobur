@@ -30,6 +30,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NewsComponent } from './components/news/news.component';
 import { TexmexComponent } from './components/menu/texmex/texmex.component';
+import { EnsaladasComponent } from './components/menu/ensaladas/ensaladas.component';
+import { CarnesComponent } from './components/menu/carnes/carnes.component';
+import { CostillasComponent } from './components/menu/costillas/costillas.component';
+import { PolloComponent } from './components/menu/pollo/pollo.component';
+import { SandwichesComponent } from './components/menu/sandwiches/sandwiches.component';
+import { HamburguesasComponent } from './components/menu/hamburguesas/hamburguesas.component';
+import { PostresComponent } from './components/menu/postres/postres.component';
 
 
 
@@ -45,7 +52,14 @@ import { TexmexComponent } from './components/menu/texmex/texmex.component';
     EntrantesComponent,
     CartComponent,
     NewsComponent,
-    TexmexComponent
+    TexmexComponent,
+    EnsaladasComponent,
+    CarnesComponent,
+    CostillasComponent,
+    PolloComponent,
+    SandwichesComponent,
+    HamburguesasComponent,
+    PostresComponent
   ],
   imports: [
     BrowserModule,

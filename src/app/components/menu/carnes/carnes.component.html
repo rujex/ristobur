@@ -7,14 +7,14 @@
 
 <br/>
 
-<!-- Tarjeta por cada texmex -->
-<div *ngFor="let texmex of texmex | async" class="card" style="width: 400px; margin-top: 100px; margin-left: 360px">
-  <img src="{{texmex.image}}" class="card-img-top" alt="...">
+<!-- Tarjeta por cada carne -->
+<div *ngFor="let carne of carnes | async" class="card" style="width: 400px; margin-top: 100px; margin-left: 360px">
+  <img src="{{carne.image}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{texmex.name}}</h5>
-    <p class="card-text">{{texmex.description}}</p>
-    <p class="card-text">{{texmex.price}}€</p>
-    <button type="button" (click)="getTexmex(texmex.id)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+    <h5 class="card-title">{{carne.name}}</h5>
+    <p class="card-text">{{carne.description}}</p>
+    <p class="card-text">{{carne.price}}€</p>
+    <button type="button" (click)="getCarne(carne.id)" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
   	 Pedir
 	</button>
   </div>
@@ -27,7 +27,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{nombreTexmex}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{nombreCarne}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" (click)="doOrder(nombreTexmex, precioTexmex)" class="btn btn-primary" data-dismiss="modal" data-backdrop="false">Añadir al carro</button>
+        <button type="button" (click)="doOrder(nombreCarne, precioCarne)" class="btn btn-primary" data-dismiss="modal" data-backdrop="false">Añadir al carro</button>
       </div>
     </div>
   </div>
