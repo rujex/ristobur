@@ -14,6 +14,8 @@ import { Ensaladas } from '../models/ensaladas';
 import { Costillas } from '../models/costillas';
 import { Pollos } from '../models/pollos';
 import { Sandwiches } from '../models/sandwiches';
+import { Hamburguesas } from '../models/hamburguesas';
+import { Postres } from '../models/postres';
 
 
 @Injectable({providedIn: 'root'})
@@ -28,6 +30,8 @@ export class FirebaseService {
     private pathCostillas = '/menu/5/Costillas';
     private pathPollos = '/menu/6/Pollo';
     private pathSandwiches = '/menu/7/Sandwiches';
+    private pathHamburguesas = '/menu/8/Hamburguesas';
+    private pathPostres = '/menu/9/Postres';
     private pathCart = '/cart';
 
     private menuRef: AngularFirestoreCollection<Menu>;
@@ -137,6 +141,30 @@ export class FirebaseService {
               );
      }
 
+     // devuelve las ensaladas
+     getHamburguesas(){
+      return  this.db.collection<Hamburguesas>(this.pathHamburguesas)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Hamburguesas;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+     }
+
+     // devuelve las ensaladas
+     getPostres(){
+      return  this.db.collection<Postres>(this.pathPostres)
+              .snapshotChanges().pipe(
+                map(actions => actions.map(a => {
+                  const data = a.payload.doc.data() as Postres;
+                  const id = a.payload.doc.id;
+                  return {id, ...data};
+                }))
+              );
+     }
+
     getEntrante(id){
       return this.db.collection('menu').doc('1').collection('Entrantes').doc<Entrantes>(id)
               .snapshotChanges().pipe(
@@ -171,7 +199,7 @@ export class FirebaseService {
     }
 
     getEnsalada(id){
-      return this.db.collection('menu').doc('3').collection('Ensalada').doc<Ensaladas>(id)
+      return this.db.collection('menu').doc('3').collection('Ensaladas').doc<Ensaladas>(id)
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Ensaladas;
@@ -193,7 +221,7 @@ export class FirebaseService {
     }
 
     getPollo(id){
-      return this.db.collection('menu').doc('6').collection('Pollos').doc<Pollos>(id)
+      return this.db.collection('menu').doc('6').collection('Pollo').doc<Pollos>(id)
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Pollos;
@@ -208,6 +236,28 @@ export class FirebaseService {
       .snapshotChanges().pipe(
         map(action => {
           const data = action.payload.data() as Sandwiches;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getHamburguesa(id){
+      return this.db.collection('menu').doc('8').collection('Hamburguesas').doc<Hamburguesas>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Hamburguesas;
+          const id = action.payload.id;
+          return {id, ...data};
+        })
+      );
+    }
+
+    getPostre(id){
+      return this.db.collection('menu').doc('9').collection('Postres').doc<Postres>(id)
+      .snapshotChanges().pipe(
+        map(action => {
+          const data = action.payload.data() as Postres;
           const id = action.payload.id;
           return {id, ...data};
         })
@@ -236,6 +286,10 @@ export class FirebaseService {
         cantidad: cantidad,
         total: total
       });
+    }
+
+    deleteProduct(email, producto){
+      this.db.collection(email).doc(producto).delete();
     }
 
 

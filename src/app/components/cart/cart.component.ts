@@ -21,9 +21,10 @@ export class CartComponent implements OnInit {
 	user;
   isOrder: boolean;
   total: number;
+  cantidad: number;
 
   constructor(private firebaseService: FirebaseService, private authService: AuthService,
-              private dataService: DataService, private toastr: ToastrService) {
+                      private dataService: DataService, private toastr: ToastrService) {
                 this.total = 0;
                }
 
@@ -31,22 +32,24 @@ export class CartComponent implements OnInit {
      this.isOrder = this.dataService.getIsOrder();
 
   	 this.authService.getUser().subscribe( user => {
-
        this.user = user.email;
 
        this.products = this.firebaseService.getCart(this.user);
-
-       this.products.forEach(object => {
-        object.forEach(dato => {
-          console.log('variable dato.total: ' + dato.total);
-          this.total += dato.total;
-          console.log('variable total: ' + this.total);
-        })
-      })
-
+       this.products.subscribe( (dato) => {
+          dato.forEach(element => {
+            this.total += element.total;
+            console.log('variable total: ' + this.total);
+          })
+       })
      })
 
 
+  }
+
+
+  deleteProduct(email, product){
+    this.total = 0;
+    this.firebaseService.deleteProduct(email, product);
   }
 
 }

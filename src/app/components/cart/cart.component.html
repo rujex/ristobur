@@ -22,6 +22,9 @@
         <td>{{product.producto}}</td>
         <td>{{product.cantidad}}</td>
         <td>{{product.total}}</td>
+        <td>
+          <button (click)="deleteProduct(user, product.producto)">Eliminar</button>
+        </td>
       </tr>
       <hr>
       <tr>
