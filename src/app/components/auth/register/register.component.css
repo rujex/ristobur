@@ -1,3 +1,20 @@
+/*
+*	Nombre y logo
+*/
+.name{
+	display: block;
+	margin-left: 15px;
+	margin-top: 20px;
+	float: left;
+	color: #2a2f23;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 3px;
+	font-size: 25px;
+}
+.logo{
+	display: block;
+	float: left;
+}
 form{
 	width: 300px;
 	height: 500px;

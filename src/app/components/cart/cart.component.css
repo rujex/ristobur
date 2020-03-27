@@ -24,3 +24,30 @@
 h1{
   text-align: center;
 }
+.delete{
+  cursor: pointer;
+}
+td{
+  font-weight: bold;
+  font-size: 20px;
+}
+th{
+  color: gray;
+}
+
+.content-total{
+  float: left;
+  margin: 30px auto;
+  margin-left: 35%;
+}
+
+.total{
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.btn{
+  width: 200px;
+  margin-top: 100px;
+  margin-left: -240px;
+}

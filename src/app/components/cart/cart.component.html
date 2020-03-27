@@ -9,32 +9,35 @@
 
 <div class="background table-responsive">
   <h1>Carrito de compra</h1>
+  <hr>
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio</th>
+        <th scope="col">COMIDA</th>
+        <th scope="col">CANTIDAD</th>
+        <th scope="col">PRECIO</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products | async">
         <td>{{product.producto}}</td>
         <td>{{product.cantidad}}</td>
-        <td>{{product.total}}</td>
+        <td>{{product.total}}€</td>
         <td>
-          <button (click)="deleteProduct(user, product.producto)">Eliminar</button>
+          <a role="button" (click)="deleteProduct(user, product.producto)">
+            <img class="delete" src="../../../assets/images/delete.png" width="30" height="30"/>
+          </a>
         </td>
-      </tr>
-      <hr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Total:</td>
-        <td>{{ total }}</td>
       </tr>
     </tbody>
   </table>
+  <hr>
+  <div class="content-total">
+    <h4 class="total">PRECIO TOTAL</h4>
+    <h4 class="total">{{total}}€</h4>
+  </div>
+  <button type="button" class="btn btn-dark btn-lg">Comprar</button>
 </div>
+
+
 

@@ -18,11 +18,11 @@ span{
 }
 .jumbotron{
   width: 702px;
+  height: 480px;
   margin-top: -50px;
-  margin-left: 89px;
+  margin-left: 85px;
   background-color: #fff;
   text-align: justify;
-  letter-spacing: 0.5px;
 }
 img{
   display: block;
