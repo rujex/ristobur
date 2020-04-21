@@ -97,3 +97,31 @@ a{
   color: white;
   font-weight: 900;
 }
+
+
+@media screen and (max-width: 768px) {
+  .info-menu{
+    visibility: hidden;
+  }
+
+  .shop{
+    visibility: hidden;
+  }
+
+  .navbar{
+    width: 500px!important;
+  }
+
+  .navbar-brand{
+    width: 120px;
+    height: 30px;
+    background-color: black;
+    color: white;
+  }
+  .icon{
+    visibility: hidden;
+  }
+  .navbar-brand:hover{
+    color: white;
+  }
+}
